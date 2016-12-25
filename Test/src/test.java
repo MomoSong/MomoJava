@@ -1,33 +1,63 @@
 import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * Created by johnm on 2016-12-15.
  */
 public class test {
-    public static void main(String[] args){
-        Scanner s = new Scanner(System.in);
-        String[] argArr = null;
+    public static void main(String[] args) {
+        Circle c1 = new Circle(2.0);
+        Circle c2 = c1.copy();
 
+        System.out.println(c1 +"::::::::" + c2);
 
-        String prompt = ">>";
-        System.out.print(prompt);
+        c1.r = 8.0;
 
-        String input = s.nextLine();
-
-        input = input.trim();
-        System.out.println(input);
-
-        argArr = input.split(" +");
-        System.out.println(Arrays.toString(argArr));
-
-
-        String command = argArr[0].trim();
-        System.out.println(command);
-
-
-
+        System.out.println(c1 +"::::::::" + c2);
 
     }
-
 }
+
+class Point {
+    int x;
+    int y;
+
+    Point(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public String toString(){
+        return x + "," + y;
+    }
+}
+
+class Circle implements Cloneable{
+
+    double r;
+
+    Circle(double r){
+
+        this.r = r;
+    }
+
+    public Circle copy(){
+        Object obj = null;
+
+        try{
+            obj = super.clone();
+        }catch(CloneNotSupportedException e) {}
+
+        //Circle c = (Circle)obj;
+        //c.p = new Point(this.p.x, this.p.y);
+        return (Circle)obj;
+    }
+
+    public String toString(){
+        return   ", r = " + this.r;
+    }
+}
+
+
+
+
+

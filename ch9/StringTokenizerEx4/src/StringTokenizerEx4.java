@@ -22,6 +22,24 @@ public class StringTokenizerEx4 {
 
         StringTokenizer st = new StringTokenizer(input, UNIT, true);
 
+        while(st.hasMoreTokens()){
+            String token = st.nextToken();
+            int check = NUMBER.indexOf(token);
 
+            if(check == -1){
+                if("만억조".indexOf(token)==-1){
+                    tmpResult += ( num!=0 ? num : 1) * UNIT_NUM[UNIT.indexOf(token)];
+                }else{
+                    tmpResult += num;
+                    result += (tmpResult != 0 ? tmpResult : 1) * UNIT_NUM[UNIT.indexOf(token)];
+                    tmpResult = 0;
+                }
+                num = 0;
+            }else{
+                num = check;
+            }
+        }
+
+        return result + tmpResult + num;
     }
 }
