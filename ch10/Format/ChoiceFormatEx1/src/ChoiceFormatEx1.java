@@ -15,6 +15,5 @@ public class ChoiceFormatEx1 {
         for (int i = 0; i < scores.length; i++) {
             System.out.println(scores[i] + ":" + form.format(scores[i]));
         }
-
     }
 }
